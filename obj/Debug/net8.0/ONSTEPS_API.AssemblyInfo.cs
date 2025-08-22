@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ONSTEPS_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b511f60aab2179ccdd3f7755922d857ed359cb12")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1442d1d4999bd2a87a61264cee6500e8c60e85f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ONSTEPS_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ONSTEPS_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
