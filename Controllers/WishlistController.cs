@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using ONSTEPS_API.Models;
-using ONSTEPS_API.Services;
+using ONSTEPS_API.Services.Wishlist;
 using System.Security.Claims;
 
 namespace ONSTEPS_API.Controllers
@@ -12,8 +12,8 @@ namespace ONSTEPS_API.Controllers
     [Authorize(Roles = "User")]
     public class WishlistController : ControllerBase
     {
-        private readonly IWishlist _wishlist;
-        public WishlistController(IWishlist wishlist)
+        private readonly IWishlistService _wishlist;
+        public WishlistController(IWishlistService wishlist)
         {
             _wishlist = wishlist;
         }
@@ -25,7 +25,19 @@ namespace ONSTEPS_API.Controllers
             {
                 return StatusCode(403);
             }
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userIdClaim = User.Claims.FirstOrDefault(c =>
+    c.Type == ClaimTypes.NameIdentifier || c.Type == "sub" || c.Type == "userId");
+
+            Console.WriteLine($"Extracted UserId: {userIdClaim}");
+
+            int userId = 0;
+            if (userIdClaim != null)
+            {
+                userId = int.Parse(userIdClaim.Value);
+            }
+
+
+
             var response = await _wishlist.AddWishlist(userId, ProductId);
             if (response.Success)
             {

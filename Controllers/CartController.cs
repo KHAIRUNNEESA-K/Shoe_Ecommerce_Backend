@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ONSTEPS_API.DTO;
-using ONSTEPS_API.Services;
+using ONSTEPS_API.DTO.Cart;
+using ONSTEPS_API.Response;
+using ONSTEPS_API.Services.Cart;
 using System.Security.Claims;
 
 namespace ONSTEPS_API.Controllers
@@ -11,8 +12,8 @@ namespace ONSTEPS_API.Controllers
     [Authorize(Roles ="User")]
     public class CartController : ControllerBase
     {
-        private readonly ICart _cart;
-        public CartController(ICart cart)
+        private readonly ICartService _cart;
+        public CartController(ICartService cart)
         {
             _cart = cart;
         }
@@ -38,16 +39,42 @@ namespace ONSTEPS_API.Controllers
             }
             return BadRequest(response);
         }
-        [HttpDelete("DeleteCart")]
-        public async Task<ActionResult> DeleteCartItems([FromBody] int productId)
+        [HttpPatch("update-cart-item")]
+        public async Task<ActionResult<CartItemDto>> UpdateCartItem([FromBody] AddToCartDto dto)
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            var response = await _cart.DeleteCart(userId, productId);
+            var response =await _cart.UpdateCartItem(userId, dto.productId,dto.quantity );
+
             if (response.Success)
             {
                 return Ok(response);
             }
-            return BadRequest(response);
+            {
+                return BadRequest(response);
+            }
+
         }
+        [HttpDelete("delete-cart-item")]
+        public async Task<ActionResult> DeleteCartItems([FromBody] CartDeleteRequestDto request)
+        {
+            try
+            {
+                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+                var response = await _cart.DeleteCart(userId, request.ProductId);
+
+                if (response.Success)
+                {
+                    return Ok(response);
+                }
+
+                return BadRequest(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Success = false, Message = ex.Message });
+            }
+        }
+
     }
 }

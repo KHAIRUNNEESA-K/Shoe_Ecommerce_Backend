@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ONSTEPS_API.DTO;
-using ONSTEPS_API.Services;
+using ONSTEPS_API.DTO.Product;
+using ONSTEPS_API.Services.Category;
+using ONSTEPS_API.Services.Product;
 
 namespace ONSTEPS_API.Controllers
 {
@@ -9,14 +10,12 @@ namespace ONSTEPS_API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly IProductServices _services;
-        private readonly IProducts _products;
-        private readonly ICategory _category;
+        private readonly IProductService _services;
+        private readonly ICategoryService _category;
 
-        public ProductController(IProductServices services,IProducts products, ICategory category)
+        public ProductController(IProductService services, ICategoryService category)
         {
             _services = services;
-            _products = products;
             _category = category;
             
         }
@@ -72,7 +71,7 @@ namespace ONSTEPS_API.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var response = await _products.DeleteProduct(id);
+            var response = await _services.DeleteProduct(id);
             if (response.Success)
             {
                 return Ok(response);
@@ -80,14 +79,14 @@ namespace ONSTEPS_API.Controllers
             return BadRequest(response);
         }
         [Authorize(Roles = "Admin")]
-        [HttpPatch("UpdateProduct")]
+        [HttpPatch("UpdateProduct{id}")]
         public async Task<ActionResult> Update([FromRoute]int id,[FromBody]ProductUpdateDto product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var response = await _products.UpdateProducts(id,product);
+            var response = await _services.UpdateProducts(id,product);
             if (response.Success)
             {
                 return Ok(response);
@@ -102,7 +101,7 @@ namespace ONSTEPS_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var response = await _products.SearchProducts(search);
+            var response = await _services.SearchProducts(search);
             if (response.Success)
             {
                 return Ok(response);
@@ -123,7 +122,7 @@ namespace ONSTEPS_API.Controllers
         [HttpGet("Pagination")]
         public async Task<ActionResult> Paginations(int pageNumber,int pageSize)
         {
-            var response=await _products.PaginationedProduct(pageNumber,pageSize);
+            var response=await _services.PaginationedProduct(pageNumber,pageSize);
             if (response.Success)
             {
                 return Ok(response);

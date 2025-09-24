@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ONSTEPS_API.DTO;
 using ONSTEPS_API.Response;
-using ONSTEPS_API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using ONSTEPS_API.Services.Authentication;
+using ONSTEPS_API.DTO.Auth;
 
 
 namespace ONSTEPS_API.Controllers
@@ -13,9 +13,9 @@ namespace ONSTEPS_API.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthServices _userSignup;
+        private readonly IAuthService _userSignup;
 
-        public AuthController(IAuthServices userSignup)
+        public AuthController(IAuthService userSignup)
         {
             _userSignup = userSignup;
         }

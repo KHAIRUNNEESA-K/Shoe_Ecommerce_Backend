@@ -18,14 +18,15 @@ namespace ONSTEPS_API.JWT_Token
             var jwtSettings = _configuration.GetSection("JwtSettings");
 
             var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role, user.Role),
-                new Claim(ClaimTypes.Email, user.Email ?? ""),
-                new Claim(ClaimTypes.Role, user.Role)
+{
+new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+   
+    new Claim(ClaimTypes.Name, user.UserName),
+    new Claim(ClaimTypes.Role, user.Role),
+    new Claim(ClaimTypes.Email, user.Email ?? "")
+};
 
-            };
+
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

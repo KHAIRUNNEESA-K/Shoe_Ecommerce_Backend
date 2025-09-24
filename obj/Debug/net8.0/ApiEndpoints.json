@@ -1,5 +1,104 @@
 [
   {
+    "ContainingType": "ONSTEPS_API.Controllers.AddressController",
+    "Method": "AddAddress",
+    "RelativePath": "api/Address/Add-Address",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addressDto",
+        "Type": "ONSTEPS_API.DTO.Address.AddressRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.AddressController",
+    "Method": "DeleteAddress",
+    "RelativePath": "api/Address/DeleteAddress",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AddressId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.AddressController",
+    "Method": "GetAddress",
+    "RelativePath": "api/Address/Get-Address",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.AddressController",
+    "Method": "GetAddressById",
+    "RelativePath": "api/Address/GetAddressById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.AddressController",
+    "Method": "UpdateAddress",
+    "RelativePath": "api/Address/UpdateAdress",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Addressid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "addressDto",
+        "Type": "ONSTEPS_API.DTO.Address.AddressRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.AdminDashboard",
+    "Method": "TotalRevenue",
+    "RelativePath": "api/AdminDashboard/TotalRevenue",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.AdminDashboard",
+    "Method": "RevenueByDate",
+    "RelativePath": "api/AdminDashboard/TotalRevenue-By-date",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ONSTEPS_API.Controllers.AdminDashboard",
     "Method": "GetBy",
     "RelativePath": "api/AdminDashboard/user/{id}",
@@ -17,8 +116,8 @@
   },
   {
     "ContainingType": "ONSTEPS_API.Controllers.AdminDashboard",
-    "Method": "Blockuser",
-    "RelativePath": "api/AdminDashboard/user/block{id}",
+    "Method": "BlockUser",
+    "RelativePath": "api/AdminDashboard/user/block/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -67,7 +166,7 @@
     "Parameters": [
       {
         "Name": "_user",
-        "Type": "ONSTEPS_API.DTO.LoginDto",
+        "Type": "ONSTEPS_API.DTO.Auth.LoginDto",
         "IsRequired": true
       }
     ],
@@ -83,7 +182,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "ONSTEPS_API.DTO.SignupDto",
+        "Type": "ONSTEPS_API.DTO.Auth.SignupDto",
         "IsRequired": true
       }
     ],
@@ -99,7 +198,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "ONSTEPS_API.DTO.AddToCartDto",
+        "Type": "ONSTEPS_API.DTO.Cart.AddToCartDto",
         "IsRequired": true
       }
     ],
@@ -118,18 +217,44 @@
   {
     "ContainingType": "ONSTEPS_API.Controllers.CartController",
     "Method": "DeleteCartItems",
-    "RelativePath": "api/Cart/DeleteCart",
+    "RelativePath": "api/Cart/delete-cart-item",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "productId",
-        "Type": "System.Int32",
+        "Name": "request",
+        "Type": "ONSTEPS_API.DTO.Cart.CartDeleteRequestDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.CartController",
+    "Method": "UpdateCartItem",
+    "RelativePath": "api/Cart/update-cart-item",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ONSTEPS_API.DTO.Cart.AddToCartDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ONSTEPS_API.DTO.Cart.CartItemDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "ONSTEPS_API.Controllers.CategoryController",
@@ -141,7 +266,7 @@
     "Parameters": [
       {
         "Name": "categoryDto",
-        "Type": "ONSTEPS_API.DTO.AddCategoryDto",
+        "Type": "ONSTEPS_API.DTO.Category.AddCategoryDto",
         "IsRequired": true
       }
     ],
@@ -160,7 +285,7 @@
   {
     "ContainingType": "ONSTEPS_API.Controllers.CategoryController",
     "Method": "UpdateCategory",
-    "RelativePath": "api/Category/UpdateCategory",
+    "RelativePath": "api/Category/UpdateCategory{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -168,11 +293,101 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "category",
-        "Type": "ONSTEPS_API.DTO.CategoryDto",
+        "Type": "ONSTEPS_API.DTO.Category.CategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.OrderController",
+    "Method": "GetOrderDetails",
+    "RelativePath": "api/Order/Order-Details/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.OrderController",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/Order/Order-Status",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ONSTEPS_API.DTO.Order.OrderStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.OrderController",
+    "Method": "GetOrder",
+    "RelativePath": "api/Order/Ordered-Items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.OrderController",
+    "Method": "PlaceOrder",
+    "RelativePath": "api/Order/PlaceOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDto",
+        "Type": "ONSTEPS_API.DTO.Order.OrderRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.PaymentController",
+    "Method": "CreatePayment",
+    "RelativePath": "api/Payment/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "ONSTEPS_API.DTO.Payment.PaymentRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ONSTEPS_API.Controllers.PaymentController",
+    "Method": "VerifyPayment",
+    "RelativePath": "api/Payment/Verify",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "ONSTEPS_API.DTO.Payment.VerifyPaymentDto",
         "IsRequired": true
       }
     ],
@@ -188,7 +403,7 @@
     "Parameters": [
       {
         "Name": "addProduct",
-        "Type": "ONSTEPS_API.DTO.ProductDto",
+        "Type": "ONSTEPS_API.DTO.Product.ProductDto",
         "IsRequired": true
       }
     ],
@@ -292,7 +507,7 @@
   {
     "ContainingType": "ONSTEPS_API.Controllers.ProductController",
     "Method": "Update",
-    "RelativePath": "api/Product/UpdateProduct",
+    "RelativePath": "api/Product/UpdateProduct{id}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -300,11 +515,11 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "product",
-        "Type": "ONSTEPS_API.DTO.ProductUpdateDto",
+        "Type": "ONSTEPS_API.DTO.Product.ProductUpdateDto",
         "IsRequired": true
       }
     ],

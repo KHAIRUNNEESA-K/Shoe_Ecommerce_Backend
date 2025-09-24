@@ -6,6 +6,7 @@ C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.Asse
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.csproj.CoreCompileInputs.cache
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.sourcelink.json
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\bin\Debug\net8.0\appsettings.json
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\bin\Debug\net8.0\ONSTEPS_API.staticwebassets.endpoints.json
@@ -172,4 +173,6 @@ C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\refint\ONSTEPS_A
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.pdb
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.genruntimeconfig.cache
 C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ref\ONSTEPS_API.dll
-C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\obj\Debug\net8.0\ONSTEPS_API.sourcelink.json
+C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\T480s\Desktop\ONSTEPS_API\ONSTEPS_API\bin\Debug\net8.0\Razorpay.dll

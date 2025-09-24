@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ONSTEPS_API.DTO;
-using ONSTEPS_API.Services;
+using ONSTEPS_API.DTO.Category;
+using ONSTEPS_API.Services.Category;
 
 namespace ONSTEPS_API.Controllers
 {
@@ -10,8 +10,8 @@ namespace ONSTEPS_API.Controllers
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategory _category;
-        public CategoryController(ICategory category)
+        private readonly ICategoryService _category;
+        public CategoryController(ICategoryService category)
         {
             _category = category;
         }
@@ -43,7 +43,7 @@ namespace ONSTEPS_API.Controllers
             }
             return BadRequest(response);
         }
-        [HttpPut("UpdateCategory")]
+        [HttpPut("UpdateCategory{id}")]
         public async Task<ActionResult> UpdateCategory(int id, CategoryDto category)
         {
             if (!ModelState.IsValid)
